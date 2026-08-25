@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { Link, router, usePage } from '@inertiajs/vue3';
 import { 
   LayoutDashboard, 
@@ -30,7 +30,7 @@ import {
 } from '@lucide/vue';
 
 const page = usePage();
-const user = page.props.auth?.user || { name: 'President Director (Admin)', email: 'admin@xseller.id' };
+const user = computed(() => page.props.auth?.user || { name: 'President Director (Admin)', username: 'admin' });
 
 const isSidebarOpen = ref(false);
 const isSidebarCollapsed = ref(false);
@@ -60,9 +60,9 @@ const closeAllToasts = () => {
 const navigation = computed(() => {
   const items = [
     { name: 'Dashboard', href: route('admin.dashboard'), icon: LayoutDashboard, current: route().current('admin.dashboard') },
-    { name: 'Team', href: route('admin.team.index'), icon: Users, current: route().current('admin.team.index') },
+    { name: 'Pohon Jaringan', href: route('admin.pohon-jaringan'), icon: GitFork, current: route().current('admin.pohon-jaringan') },
     { name: 'Aktivasi Mitra', href: route('admin.activation.index'), icon: UserPlus, current: route().current('admin.activation.index') },
-    { name: 'DP Awal', href: route('admin.voucher-wallet.index'), icon: KeyRound, current: route().current('admin.voucher-wallet.index') },
+    { name: 'DP Awal / Voucher', href: route('admin.voucher-wallet.index'), icon: KeyRound, current: route().current('admin.voucher-wallet.index') },
     { name: 'Keuangan', href: route('admin.finance.index'), icon: Wallet, current: route().current('admin.finance.index') },
     { name: 'Penarikan Bonus', href: route('admin.withdrawals.index'), icon: ArrowUpRight, current: route().current('admin.withdrawals.index') },
     { name: 'Data Team', href: route('admin.network-data.index'), icon: Users, current: route().current('admin.network-data.index') },
@@ -71,8 +71,7 @@ const navigation = computed(() => {
     { name: 'Pengaturan Profile', href: route('profile.edit'), icon: UserCheck, current: route().current('profile.edit') },
   ];
 
-  if (user.value.roles?.[0]?.name === 'admin') {
-    items.push({ name: 'Order Pembayaran', href: route('admin.payment-orders.index'), icon: ClipboardList, current: route().current('admin.payment-orders.index') });
+  if (user.value?.roles?.[0]?.name === 'admin') {
     items.push({ name: 'Pengaturan Sistem', href: route('admin.settings.index'), icon: SettingsIcon, current: route().current('admin.settings.index'), special: 'amber' });
   }
 
