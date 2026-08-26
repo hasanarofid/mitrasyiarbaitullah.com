@@ -54,7 +54,7 @@ class TeamController extends Controller
 
             // Fetch members at this level
             $query = User::whereIn('parent_id', $currentLevelUserIds)
-                ->select('id', 'name', 'username', 'email', 'parent_id', 'created_at', 'package_name', 'phone')
+                ->select('id', 'name', 'username', 'email', 'parent_id', 'created_at', 'package_name')
                 ->with('parent:id,name,username')
                 ->orderBy('id', 'desc');
 
