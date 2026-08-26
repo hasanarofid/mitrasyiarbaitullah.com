@@ -23,7 +23,7 @@ class VoucherWalletController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $voucherPrice = (float) (Setting::get('voucher_price', 500000));
+        $voucherPrice = (float) (Setting::getValue('voucher_price', 500000));
 
         // Count active DP Awal vouchers
         $voucherCount = Voucher::where('user_id', $user->id)->where('status', 'active')->count();
@@ -95,7 +95,7 @@ class VoucherWalletController extends Controller
     public function buy(Request $request)
     {
         $user = auth()->user();
-        $price = (float) (Setting::get('voucher_price', 500000));
+        $price = (float) (Setting::getValue('voucher_price', 500000));
 
         if (($user->saldo ?? 2500000) < $price) {
             return back()->with('error', 'Saldo wallet Anda tidak mencukupi untuk membeli DP Awal (Rp ' . number_format($price, 0, ',', '.') . ')!');

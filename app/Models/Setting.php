@@ -25,6 +25,14 @@ class Setting extends Model
     }
 
     /**
+     * Alias for getValue.
+     */
+    public static function get(string $key, $default = null)
+    {
+        return static::getValue($key, $default);
+    }
+
+    /**
      * Set/update a setting value.
      *
      * @param string $key
