@@ -10,109 +10,180 @@ use Inertia\Inertia;
 class GenealogyController extends Controller
 {
     /**
-     * Display the binary genealogy network tree.
+     * Display the Team Saya (Generasi Multi-Tier Level 1-12) page.
+     * Replaces binary tree with Unilevel Team Structure.
      */
     public function index(Request $request)
     {
         $currentUser = auth()->user() ?: User::first();
         
-        $focusId = $request->query('focus_id', $currentUser->id);
-        $focusedUser = User::with(['leftSon', 'rightSon'])->find($focusId);
+        // Focus user selection
+        $focusId = $request->query('focus_id');
+        $username = $request->query('username');
+
+        $focusedUser = null;
+        if ($focusId) {
+            $focusedUser = User::find($focusId);
+        } elseif ($username) {
+            $focusedUser = User::where('username', $username)->first();
+        }
 
         if (!$focusedUser) {
             $focusedUser = $currentUser;
         }
 
-        // Build 3-level tree node array
-        $treeData = $this->buildBinaryNode($focusedUser);
+        $selectedLevel = $request->input('level', 'all'); // 'all' or 1..12
+        $search = $request->input('search', '');
+        $multiplier = (int) $request->input('multiplier', 5); // 5, 10, 15, etc.
+        if ($multiplier < 1) {
+            $multiplier = 5;
+        }
 
-        // All users for quick focus search dropdown
+        // Generate 12 Team Levels (Generasi 1 - 12)
+        $teamLevels = [];
+        $currentLevelUserIds = [$focusedUser->id];
+
+        $totalMembersAllLevels = 0;
+        $totalCommissionAllLevels = 0;
+        $activeLevelsCount = 0;
+        $allMembersList = [];
+
+        for ($level = 1; $level <= 12; $level++) {
+            $commPerMember = $this->getCommissionForLevel($level);
+            $projectionCount = pow($multiplier, $level);
+            $projectionTotalComm = $projectionCount * $commPerMember;
+
+            if (empty($currentLevelUserIds)) {
+                $teamLevels[$level] = [
+                    'level'                 => $level,
+                    'name'                  => "Team {$level}",
+                    'count'                 => 0,
+                    'commission_per_member' => $commPerMember,
+                    'total_commission'      => 0,
+                    'projection_count'      => $projectionCount,
+                    'projection_commission' => $projectionTotalComm,
+                    'members'               => [],
+                ];
+                continue;
+            }
+
+            // Fetch members at this level (parent_id in current level user IDs)
+            $levelMembers = User::whereIn('parent_id', $currentLevelUserIds)
+                ->select('id', 'name', 'username', 'email', 'parent_id', 'created_at', 'package_name', 'phone')
+                ->with('parent:id,name,username')
+                ->orderBy('id', 'desc')
+                ->get();
+
+            $nextUserIds = $levelMembers->pluck('id')->toArray();
+            $count = $levelMembers->count();
+
+            if ($count > 0) {
+                $activeLevelsCount++;
+            }
+
+            $totalMembersAllLevels += $count;
+            $levelTotalComm = $count * $commPerMember;
+            $totalCommissionAllLevels += $levelTotalComm;
+
+            $formattedMembers = $levelMembers->map(function ($m) use ($level, $commPerMember) {
+                return [
+                    'id'           => $m->id,
+                    'name'         => $m->name,
+                    'username'     => $m->username ?: 'user' . $m->id,
+                    'email'        => $m->email,
+                    'phone'        => $m->phone ?? '-',
+                    'sponsor'      => $m->parent ? '@' . ($m->parent->username ?: 'user' . $m->parent->id) . ' (' . $m->parent->name . ')' : 'FOUNDER',
+                    'package'      => $m->package_name ?: 'Basic DP Rp 500rb',
+                    'joined_at'    => $m->created_at ? $m->created_at->format('d/m/Y') : '-',
+                    'level'        => "Team {$level}",
+                    'level_num'    => $level,
+                    'commission'   => $commPerMember,
+                ];
+            })->toArray();
+
+            $teamLevels[$level] = [
+                'level'                 => $level,
+                'name'                  => "Team {$level}",
+                'count'                 => $count,
+                'commission_per_member' => $commPerMember,
+                'total_commission'      => $levelTotalComm,
+                'projection_count'      => $projectionCount,
+                'projection_commission' => $projectionTotalComm,
+                'members'               => $formattedMembers,
+            ];
+
+            foreach ($formattedMembers as $fm) {
+                $allMembersList[] = $fm;
+            }
+
+            $currentLevelUserIds = $nextUserIds;
+        }
+
+        // Filter members list based on selected level & search keyword
+        $filteredMembers = collect($allMembersList);
+
+        if ($selectedLevel !== 'all') {
+            $lvlNum = (int) $selectedLevel;
+            $filteredMembers = $filteredMembers->filter(fn($m) => $m['level_num'] === $lvlNum);
+        }
+
+        if (!empty($search)) {
+            $searchLower = strtolower($search);
+            $filteredMembers = $filteredMembers->filter(function ($m) use ($searchLower) {
+                return str_contains(strtolower($m['name']), $searchLower)
+                    || str_contains(strtolower($m['username']), $searchLower)
+                    || str_contains(strtolower($m['email']), $searchLower)
+                    || str_contains(strtolower($m['sponsor']), $searchLower);
+            });
+        }
+
         $allUsers = User::select('id', 'name', 'username', 'email')->get()->map(function ($u) {
             return [
-                'id' => $u->id,
-                'name' => $u->name,
+                'id'       => $u->id,
+                'name'     => $u->name,
                 'username' => $u->username ?: ('@' . strtolower(explode(' ', $u->name)[0])),
-                'label' => $u->name . ' (' . ($u->username ? '@' . $u->username : $u->email) . ')',
+                'label'    => $u->name . ' (' . ($u->username ? '@' . $u->username : $u->email) . ')',
             ];
         });
 
+        $directSponsorsCount = $teamLevels[1]['count'] ?? 0;
+
         return Inertia::render('Admin/Genealogy/Index', [
             'focus_user' => [
-                'id' => $focusedUser->id,
-                'name' => $focusedUser->name,
+                'id'       => $focusedUser->id,
+                'name'     => $focusedUser->name,
                 'username' => $focusedUser->username ? '@' . $focusedUser->username : '@admin',
             ],
-            'tree' => $treeData,
-            'all_users' => $allUsers,
+            'summary' => [
+                'total_members'    => $totalMembersAllLevels,
+                'direct_sponsors'  => $directSponsorsCount,
+                'total_commission' => $totalCommissionAllLevels,
+                'active_levels'    => $activeLevelsCount,
+            ],
+            'team_levels'      => array_values($teamLevels),
+            'filtered_members' => array_values($filteredMembers->toArray()),
+            'all_users'        => $allUsers,
+            'filters' => [
+                'level'      => (string) $selectedLevel,
+                'search'     => $search,
+                'multiplier' => $multiplier,
+                'focus_id'   => $focusedUser->id,
+            ],
         ]);
     }
 
-    private function buildBinaryNode($user)
+    /**
+     * Get commission per member by team level according to marketing plan.
+     */
+    private function getCommissionForLevel(int $level): float
     {
-        if (!$user) {
-            return null;
-        }
-
-        $leftSon = User::where('parent_id', $user->id)->where('position', 'left')->first();
-        $rightSon = User::where('parent_id', $user->id)->where('position', 'right')->first();
-
-        $leftLeft = $leftSon ? User::where('parent_id', $leftSon->id)->where('position', 'left')->first() : null;
-        $leftRight = $leftSon ? User::where('parent_id', $leftSon->id)->where('position', 'right')->first() : null;
-
-        $rightLeft = $rightSon ? User::where('parent_id', $rightSon->id)->where('position', 'left')->first() : null;
-        $rightRight = $rightSon ? User::where('parent_id', $rightSon->id)->where('position', 'right')->first() : null;
-
-        return [
-            'id' => $user->id,
-            'name' => $user->name,
-            'username' => $user->username ? '@' . $user->username : '@admin',
-            'left_count' => $user->left_count ?? 0,
-            'right_count' => $user->right_count ?? 0,
-            'package_name' => $user->package_name ?? 'Basic',
-            'left' => $leftSon ? [
-                'id' => $leftSon->id,
-                'name' => $leftSon->name,
-                'username' => $leftSon->username ? '@' . $leftSon->username : '@budi',
-                'left_count' => $leftSon->left_count ?? 0,
-                'right_count' => $leftSon->right_count ?? 0,
-                'package_name' => $leftSon->package_name ?? 'Basic',
-                'left' => $leftLeft ? [
-                    'id' => $leftLeft->id,
-                    'name' => $leftLeft->name,
-                    'username' => $leftLeft->username ? '@' . $leftLeft->username : '@dewi',
-                    'left_count' => $leftLeft->left_count ?? 0,
-                    'right_count' => $leftLeft->right_count ?? 0,
-                ] : null,
-                'right' => $leftRight ? [
-                    'id' => $leftRight->id,
-                    'name' => $leftRight->name,
-                    'username' => $leftRight->username ? '@' . $leftRight->username : '@eko',
-                    'left_count' => $leftRight->left_count ?? 0,
-                    'right_count' => $leftRight->right_count ?? 0,
-                ] : null,
-            ] : null,
-            'right' => $rightSon ? [
-                'id' => $rightSon->id,
-                'name' => $rightSon->name,
-                'username' => $rightSon->username ? '@' . $rightSon->username : '@siti',
-                'left_count' => $rightSon->left_count ?? 0,
-                'right_count' => $rightSon->right_count ?? 0,
-                'package_name' => $rightSon->package_name ?? 'Basic',
-                'left' => $rightLeft ? [
-                    'id' => $rightLeft->id,
-                    'name' => $rightLeft->name,
-                    'username' => $rightLeft->username ? '@' . $rightLeft->username : '@fajar',
-                    'left_count' => $rightLeft->left_count ?? 0,
-                    'right_count' => $rightLeft->right_count ?? 0,
-                ] : null,
-                'right' => $rightRight ? [
-                    'id' => $rightRight->id,
-                    'name' => $rightRight->name,
-                    'username' => $rightRight->username ? '@' . $rightRight->username : '',
-                    'left_count' => $rightRight->left_count ?? 0,
-                    'right_count' => $rightRight->right_count ?? 0,
-                ] : null,
-            ] : null,
-        ];
+        return match (true) {
+            $level >= 1 && $level <= 7  => 5000,
+            $level == 8                 => 3000,
+            $level >= 9 && $level <= 10 => 2000,
+            $level >= 11 && $level <= 12=> 1000,
+            default                     => 0,
+        };
     }
 }
+

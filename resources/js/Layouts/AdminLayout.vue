@@ -60,7 +60,7 @@ const closeAllToasts = () => {
 const navigation = computed(() => {
   const items = [
     { name: 'Dashboard', href: route('admin.dashboard'), icon: LayoutDashboard, current: route().current('admin.dashboard') },
-    { name: 'Pohon Jaringan', href: route('admin.pohon-jaringan'), icon: GitFork, current: route().current('admin.pohon-jaringan') },
+    { name: 'Team Saya', href: route('admin.pohon-jaringan'), icon: Users, current: route().current('admin.pohon-jaringan') },
     { name: 'Aktivasi Mitra', href: route('admin.activation.index'), icon: UserPlus, current: route().current('admin.activation.index') },
     { name: 'DP Awal / Voucher', href: route('admin.voucher-wallet.index'), icon: KeyRound, current: route().current('admin.voucher-wallet.index') },
     { name: 'Keuangan', href: route('admin.finance.index'), icon: Wallet, current: route().current('admin.finance.index') },
