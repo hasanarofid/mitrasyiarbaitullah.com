@@ -36,12 +36,14 @@ class VoucherWalletController extends Controller
             ->map(function ($v) {
                 $isAvailable = $v->status === 'active';
                 $usedByUsername = $v->usedBy ? $v->usedBy->username : 'mitra';
-                $usedDate = $v->used_at ? $v->used_at->format('j/n/Y') : $v->updated_at->format('j/n/Y');
+                $rawDate = $v->used_at ?: $v->updated_at;
+                $usedDate = $rawDate ? \Carbon\Carbon::parse($rawDate)->format('j/n/Y') : '-';
+                $createdDate = $v->created_at ? \Carbon\Carbon::parse($v->created_at)->format('j/n/Y') : '-';
 
                 return [
                     'id'          => $v->id,
                     'code'        => $v->code,
-                    'created_at'  => $v->created_at->format('j/n/Y'),
+                    'created_at'  => $createdDate,
                     'status'      => $isAvailable ? 'TERSEDIA' : 'TERPAKAI',
                     'keterangan'  => $isAvailable
                         ? 'Menunggu pendaftaran mitra baru'
@@ -66,11 +68,13 @@ class VoucherWalletController extends Controller
                     ? ($t->recipient ? $t->recipient->name . ' (@' . $t->recipient->username . ')' : 'Mitra')
                     : ($t->sender ? $t->sender->name . ' (@' . $t->sender->username . ')' : 'Mitra');
 
+                $transferDate = $t->created_at ? \Carbon\Carbon::parse($t->created_at)->format('j/n/Y, H:i.s') : '-';
+
                 return [
                     'id'           => $t->id,
                     'type'         => $isSender ? 'DIKIRIM' : 'DITERIMA',
                     'keterangan'   => $isSender ? 'Mengirim DP Awal ke ' . $targetName : 'Menerima DP Awal dari ' . $targetName,
-                    'created_at'   => $t->created_at->format('j/n/Y, H:i.s'),
+                    'created_at'   => $transferDate,
                     'voucher_code' => $t->voucher_code,
                 ];
             });

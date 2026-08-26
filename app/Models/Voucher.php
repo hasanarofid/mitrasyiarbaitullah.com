@@ -18,6 +18,10 @@ class Voucher extends Model
         'used_at',
     ];
 
+    protected $casts = [
+        'used_at' => 'datetime',
+    ];
+
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
