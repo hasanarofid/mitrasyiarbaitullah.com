@@ -107,10 +107,9 @@ Reward tambahan yang diberikan kepada Agen berdasarkan pencapaian total akumulas
 
 ### C. Alur Git & Deployment Production (Plesk Auto-Deploy)
 1. **Aturan Asset Terkompilasi (`public/build`):**
-   - Karena server Plesk production melakukan Git Pull/Deploy otomatis tanpa menjalankan `npm run build` di server, **folder `public/build` WAJIB di-commit dan di-push** ke repository.
+   - Folder `public/build` dimasukkan ke `.gitignore` karena server sudah mengolah/mendeploy otomatis.
 2. **Prosedur Push Production:**
    ```bash
-   npm run build
    git add .
    git commit -m "feat/fix: deskripsi perubahan"
    git push origin master

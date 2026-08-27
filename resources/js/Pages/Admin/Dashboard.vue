@@ -130,7 +130,7 @@ const formatRupiah = (val) => {
           </div>
 
           <!-- Bonus Breakdown -->
-          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-xs">
+          <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 text-xs">
             <div class="p-2 bg-slate-50 rounded-xl">
               <p class="text-[10px] text-slate-400 font-bold uppercase">Sponsor (20%)</p>
               <p class="font-bold text-indigo-600 mt-0.5">{{ formatRupiah(wallet?.bonus_sponsor || 300000) }}</p>
@@ -142,10 +142,6 @@ const formatRupiah = (val) => {
             <div class="p-2 bg-slate-50 rounded-xl">
               <p class="text-[10px] text-slate-400 font-bold uppercase">Titik RO</p>
               <p class="font-bold text-amber-600 mt-0.5">{{ formatRupiah(wallet?.bonus_titik || 0) }}</p>
-            </div>
-            <div class="p-2 bg-slate-50 rounded-xl">
-              <p class="text-[10px] text-slate-400 font-bold uppercase">Reward</p>
-              <p class="font-bold text-rose-600 mt-0.5">{{ formatRupiah(wallet?.bonus_reward || 0) }}</p>
             </div>
           </div>
         </div>
@@ -183,187 +179,6 @@ const formatRupiah = (val) => {
           </div>
         </div>
 
-      </div>
-
-      <!-- 3. Pencapaian Reward Jaringan Card Row (WHITE Container Card matching Gambar 2) -->
-      <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
-          <div>
-            <div class="flex items-center gap-2">
-              <Trophy class="w-5 h-5 text-amber-500" />
-              <h3 class="text-base font-extrabold text-slate-900 tracking-tight uppercase">Pencapaian Reward Jaringan</h3>
-            </div>
-            <p class="text-xs text-slate-500 mt-0.5">Sistem reward dihitung otomatis dari keseimbangan volume kaki Kiri & Kanan Anda.</p>
-          </div>
-          <div class="px-3.5 py-1.5 bg-amber-50 text-amber-600 border border-amber-200 text-xs font-bold rounded-full self-start sm:self-auto">
-            Total Reward Cair: Rp 0
-          </div>
-        </div>
-
-        <!-- Reward Cards Grid (5 Cards matching Gambar 2) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          
-          <!-- Silver Reward -->
-          <div class="p-4 bg-slate-50/70 border border-slate-100 rounded-2xl space-y-3 relative overflow-hidden flex flex-col justify-between">
-            <div class="space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-extrabold text-slate-600 uppercase tracking-wider">SILVER REWARD</span>
-                <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-slate-600">
-                  <Sparkles class="w-3.5 h-3.5" />
-                </div>
-              </div>
-              <p class="text-[10px] text-slate-400 font-bold uppercase">HADIAH</p>
-              <h4 class="text-xs font-black text-slate-800 leading-tight">HP Android / Rp 1 Juta</h4>
-              <p class="text-[10px] text-slate-500">Syarat: 10 : 10</p>
-            </div>
-
-            <div class="space-y-2 pt-2 border-t border-slate-200/60">
-              <div class="space-y-1 text-[10px] text-slate-500">
-                <div class="flex justify-between font-bold"><span>Kiri:</span> <span>3/10</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-indigo-500 rounded-full" style="width: 30%"></div>
-                </div>
-                <div class="flex justify-between font-bold pt-1"><span>Kanan:</span> <span>2/10</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-indigo-500 rounded-full" style="width: 20%"></div>
-                </div>
-              </div>
-
-              <button class="w-full py-1.5 bg-slate-100 text-slate-400 text-[10px] font-bold rounded-lg uppercase tracking-wider cursor-not-allowed">
-                MENUNGGU
-              </button>
-            </div>
-          </div>
-
-          <!-- Gold Reward -->
-          <div class="p-4 bg-slate-50/70 border border-slate-100 rounded-2xl space-y-3 relative overflow-hidden flex flex-col justify-between">
-            <div class="space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-extrabold text-amber-600 uppercase tracking-wider">GOLD REWARD</span>
-                <div class="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center text-amber-600">
-                  <Award class="w-3.5 h-3.5" />
-                </div>
-              </div>
-              <p class="text-[10px] text-slate-400 font-bold uppercase">HADIAH</p>
-              <h4 class="text-xs font-black text-slate-800 leading-tight">Laptop / Rp 5 Juta</h4>
-              <p class="text-[10px] text-slate-500">Syarat: 50 : 50</p>
-            </div>
-
-            <div class="space-y-2 pt-2 border-t border-slate-200/60">
-              <div class="space-y-1 text-[10px] text-slate-500">
-                <div class="flex justify-between font-bold"><span>Kiri:</span> <span>3/50</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-amber-500 rounded-full" style="width: 6%"></div>
-                </div>
-                <div class="flex justify-between font-bold pt-1"><span>Kanan:</span> <span>2/50</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-amber-500 rounded-full" style="width: 4%"></div>
-                </div>
-              </div>
-
-              <button class="w-full py-1.5 bg-slate-100 text-slate-400 text-[10px] font-bold rounded-lg uppercase tracking-wider cursor-not-allowed">
-                MENUNGGU
-              </button>
-            </div>
-          </div>
-
-          <!-- Platinum Reward -->
-          <div class="p-4 bg-slate-50/70 border border-slate-100 rounded-2xl space-y-3 relative overflow-hidden flex flex-col justify-between">
-            <div class="space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-extrabold text-indigo-600 uppercase tracking-wider">PLATINUM REWARD</span>
-                <div class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
-                  <ShieldCheck class="w-3.5 h-3.5" />
-                </div>
-              </div>
-              <p class="text-[10px] text-slate-400 font-bold uppercase">HADIAH</p>
-              <h4 class="text-xs font-black text-slate-800 leading-tight">Motor / Rp 25 Juta</h4>
-              <p class="text-[10px] text-slate-500">Syarat: 250 : 250</p>
-            </div>
-
-            <div class="space-y-2 pt-2 border-t border-slate-200/60">
-              <div class="space-y-1 text-[10px] text-slate-500">
-                <div class="flex justify-between font-bold"><span>Kiri:</span> <span>3/250</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-indigo-500 rounded-full" style="width: 2%"></div>
-                </div>
-                <div class="flex justify-between font-bold pt-1"><span>Kanan:</span> <span>2/250</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-indigo-500 rounded-full" style="width: 1%"></div>
-                </div>
-              </div>
-
-              <button class="w-full py-1.5 bg-slate-100 text-slate-400 text-[10px] font-bold rounded-lg uppercase tracking-wider cursor-not-allowed">
-                MENUNGGU
-              </button>
-            </div>
-          </div>
-
-          <!-- Diamond Reward -->
-          <div class="p-4 bg-slate-50/70 border border-slate-100 rounded-2xl space-y-3 relative overflow-hidden flex flex-col justify-between">
-            <div class="space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-extrabold text-rose-600 uppercase tracking-wider">DIAMOND REWARD</span>
-                <div class="w-6 h-6 rounded-full bg-rose-100 flex items-center justify-center text-rose-600">
-                  <Trophy class="w-3.5 h-3.5" />
-                </div>
-              </div>
-              <p class="text-[10px] text-slate-400 font-bold uppercase">HADIAH</p>
-              <h4 class="text-xs font-black text-slate-800 leading-tight">Mobil / Rp 150 Juta</h4>
-              <p class="text-[10px] text-slate-500">Syarat: 1000 : 1000</p>
-            </div>
-
-            <div class="space-y-2 pt-2 border-t border-slate-200/60">
-              <div class="space-y-1 text-[10px] text-slate-500">
-                <div class="flex justify-between font-bold"><span>Kiri:</span> <span>3/1000</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-rose-500 rounded-full" style="width: 1%"></div>
-                </div>
-                <div class="flex justify-between font-bold pt-1"><span>Kanan:</span> <span>2/1000</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-rose-500 rounded-full" style="width: 1%"></div>
-                </div>
-              </div>
-
-              <button class="w-full py-1.5 bg-slate-100 text-slate-400 text-[10px] font-bold rounded-lg uppercase tracking-wider cursor-not-allowed">
-                MENUNGGU
-              </button>
-            </div>
-          </div>
-
-          <!-- Crown Reward -->
-          <div class="p-4 bg-slate-50/70 border border-slate-100 rounded-2xl space-y-3 relative overflow-hidden flex flex-col justify-between">
-            <div class="space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-extrabold text-emerald-600 uppercase tracking-wider">CROWN REWARD</span>
-                <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                  <Gift class="w-3.5 h-3.5" />
-                </div>
-              </div>
-              <p class="text-[10px] text-slate-400 font-bold uppercase">HADIAH</p>
-              <h4 class="text-xs font-black text-slate-800 leading-tight">Rumah Mewah / Rp 750 Juta</h4>
-              <p class="text-[10px] text-slate-500">Syarat: 5000 : 5000</p>
-            </div>
-
-            <div class="space-y-2 pt-2 border-t border-slate-200/60">
-              <div class="space-y-1 text-[10px] text-slate-500">
-                <div class="flex justify-between font-bold"><span>Kiri:</span> <span>3/5000</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-emerald-500 rounded-full" style="width: 1%"></div>
-                </div>
-                <div class="flex justify-between font-bold pt-1"><span>Kanan:</span> <span>2/5000</span></div>
-                <div class="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                  <div class="h-full bg-emerald-500 rounded-full" style="width: 1%"></div>
-                </div>
-              </div>
-
-              <button class="w-full py-1.5 bg-slate-100 text-slate-400 text-[10px] font-bold rounded-lg uppercase tracking-wider cursor-not-allowed">
-                MENUNGGU
-              </button>
-            </div>
-          </div>
-
-        </div>
       </div>
 
       <!-- 4. Membership Packages & TPR Plan PRD 2026 Overview -->
