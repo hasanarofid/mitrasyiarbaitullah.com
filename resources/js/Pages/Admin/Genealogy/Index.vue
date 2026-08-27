@@ -183,7 +183,7 @@ const resetFocus = () => {
                 <span>Skema Ujroh & Komisi</span>
               </div>
               <p class="text-slate-300 text-[11px]">
-                Ujroh Sponsor Direct: <strong>Rp 250.000</strong> per mitra (2 Mitra = Balik Modal!). Plus Komisi Team Rp 5.000 s/d Rp 1.000 per mitra.
+                Ujroh Operasional Direct: <strong>Rp 250.000</strong> per mitra (2 Mitra = Balik Modal!). Plus Komisi Team Rp 5.000 s/d Rp 1.000 per mitra.
               </p>
             </div>
           </div>
@@ -207,10 +207,10 @@ const resetFocus = () => {
           </div>
         </div>
 
-        <!-- Direct Sponsor (Team 1) -->
+        <!-- Direct Operasional (Team 1) -->
         <div class="p-5 rounded-2xl bg-white border border-[#e09d49]/40 shadow-sm space-y-2 relative overflow-hidden">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-extrabold text-[#9d7c64] uppercase tracking-wider">DIRECT SPONSOR (TEAM 1)</span>
+            <span class="text-xs font-extrabold text-[#9d7c64] uppercase tracking-wider">DIRECT OPERASIONAL (TEAM 1)</span>
             <div class="p-2.5 rounded-xl bg-[#2e395d]/10 text-[#2e395d]">
               <UserPlus class="w-5 h-5" />
             </div>

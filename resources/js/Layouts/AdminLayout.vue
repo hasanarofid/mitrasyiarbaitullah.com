@@ -38,7 +38,7 @@ const isUserMenuOpen = ref(false);
 const isNotificationsOpen = ref(false);
 
 const notifications = ref([
-  { id: 1, title: 'Bonus Sponsor Masuk', desc: 'Rp 250.000 dari pendaftaran member baru', time: '10 min lalu', read: false },
+  { id: 1, title: 'Bonus Operasional Masuk', desc: 'Rp 250.000 dari pendaftaran member baru', time: '10 min lalu', read: false },
   { id: 2, title: 'Pembayaran Voucher Terverifikasi', desc: 'Order pembelian voucher telah disetujui admin', time: '1 jam lalu', read: false },
   { id: 3, title: 'Komisi Team Generasi 2', desc: 'Rp 5.000 dikreditkan ke e-Wallet Syiar Anda', time: '3 jam lalu', read: true },
 ]);

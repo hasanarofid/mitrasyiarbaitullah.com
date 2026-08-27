@@ -135,11 +135,11 @@ const resetDefaults = () => {
 
             <!-- Bonus 3 Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              <!-- Bonus Sponsor -->
+              <!-- Bonus Operasional -->
               <div class="p-4 bg-white border border-slate-200/80 rounded-xl space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="text-xs font-black text-slate-900">BONUS SPONSOR</span>
-                  <span class="px-2 py-0.5 text-[9px] font-extrabold bg-emerald-100 text-emerald-700 rounded uppercase">SPONSOR</span>
+                  <span class="text-xs font-black text-slate-900">BONUS OPERASIONAL</span>
+                  <span class="px-2 py-0.5 text-[9px] font-extrabold bg-emerald-100 text-emerald-700 rounded uppercase">OPERASIONAL</span>
                 </div>
                 <div>
                   <label class="text-[10px] text-slate-400 block mb-0.5">PERSENTASE (%)</label>
@@ -290,7 +290,7 @@ const resetDefaults = () => {
                 <span class="text-[10px] text-slate-400 font-bold block uppercase mb-1">Pengecualian Batasan Level:</span>
                 <label class="flex items-center gap-2 cursor-pointer">
                   <input v-model="form.allow_sponsor_exceed" type="checkbox" class="w-4 h-4 text-amber-600 rounded" />
-                  <span>Tetap berikan Bonus Sponsor</span>
+                  <span>Tetap berikan Bonus Operasional</span>
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
                   <input v-model="form.allow_pairing_exceed" type="checkbox" class="w-4 h-4 text-amber-600 rounded" />

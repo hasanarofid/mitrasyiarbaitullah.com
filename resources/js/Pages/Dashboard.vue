@@ -36,13 +36,13 @@ import { Wallet, Users, Award, TrendingUp, Sparkles, QrCode, ArrowUpRight, Arrow
                     <div class="lg:col-span-8 space-y-3">
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs font-bold text-[#e09d49]">
                             <Sparkles class="w-3.5 h-3.5" />
-                            <span>Program Syiar Multi-Tier & Ujroh Sponsor</span>
+                            <span>Program Syiar Multi-Tier & Ujroh Operasional</span>
                         </div>
                         <h3 class="text-2xl sm:text-3xl font-black tracking-tight leading-snug">
-                            Ujroh Sponsor Rp 250.000 / Jamaah Baru
+                            Ujroh Operasional Rp 250.000 / Jamaah Baru
                         </h3>
                         <p class="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-2xl font-medium">
-                            Sponsori 2 Mitra sudah Balik Modal! Dapatkan alokasi komisi team multi-tier hingga 12 Generasi dan Reward Syiar Prestasi hingga Rp 1.000.000.000.
+                            Operasionalkan 2 Mitra sudah Balik Modal! Dapatkan alokasi komisi team multi-tier hingga 12 Generasi.
                         </p>
                     </div>
 
@@ -58,10 +58,10 @@ import { Wallet, Users, Award, TrendingUp, Sparkles, QrCode, ArrowUpRight, Arrow
 
             <!-- Stats Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <!-- Card 1: Total Ujroh Sponsor -->
+                <!-- Card 1: Total Ujroh Operasional -->
                 <div class="p-5 rounded-2xl bg-white border border-[#e09d49]/40 shadow-sm space-y-2 relative overflow-hidden">
                     <div class="flex items-center justify-between">
-                        <span class="text-xs font-extrabold text-[#9d7c64] uppercase tracking-wider">Ujroh Sponsor</span>
+                        <span class="text-xs font-extrabold text-[#9d7c64] uppercase tracking-wider">Ujroh Operasional</span>
                         <div class="p-2 rounded-xl bg-[#e98318]/15 text-[#e98318]">
                             <Wallet class="w-5 h-5" />
                         </div>

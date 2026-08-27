@@ -127,7 +127,7 @@ const formatRupiah = (val) => {
           <!-- Bonus Breakdown -->
           <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 text-xs">
             <div class="p-2 bg-slate-50 rounded-xl">
-              <p class="text-[10px] text-slate-400 font-bold uppercase">Sponsor (20%)</p>
+              <p class="text-[10px] text-slate-400 font-bold uppercase">Operasional (20%)</p>
               <p class="font-bold text-indigo-600 mt-0.5">{{ formatRupiah(wallet?.bonus_sponsor || 300000) }}</p>
             </div>
             <div class="p-2 bg-slate-50 rounded-xl">
@@ -207,7 +207,7 @@ const formatRupiah = (val) => {
               <ul class="space-y-1.5 text-[11px] text-slate-600 pt-2 border-t border-slate-200/60">
                 <li class="flex items-center gap-1">
                   <span class="text-emerald-500 font-bold">•</span>
-                  <span>Sponsor: <strong class="text-slate-800">{{ formatRupiah(pkg.sponsor_bonus) }}</strong></span>
+                  <span>Operasional: <strong class="text-slate-800">{{ formatRupiah(pkg.sponsor_bonus) }}</strong></span>
                 </li>
                 <li class="flex items-center gap-1">
                   <span class="text-indigo-500 font-bold">•</span>

@@ -152,20 +152,20 @@ const resetFilter = () => {
         </div>
       </div>
 
-      <!-- Infographic Marketing Plan Rules Card -->
-      <div class="bg-gradient-to-r from-[#2e395d] via-[#5c2c24] to-[#e98318] text-white p-6 sm:p-8 rounded-3xl shadow-lg relative overflow-hidden space-y-4">
+      <!-- Hero Banner PRD 2026 -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#2e395d] via-[#5c2c24] to-[#e98318] text-white shadow-xl relative overflow-hidden">
         <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div class="space-y-2 max-w-3xl">
+          <div class="space-y-3 max-w-2xl">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs font-bold text-[#e09d49]">
               <Award class="w-3.5 h-3.5 text-[#e09d49]" />
               <span>Aturan Penjualan & Komisi Multi-Tier (PRD 2026)</span>
             </div>
             <h2 class="text-xl sm:text-2xl font-black tracking-tight leading-snug">
-              Sponsor Direct Tanpa Batas — Kelipatan Bertumbuh di Setiap Team
+              Operasional Direct Tanpa Batas — Kelipatan Bertumbuh di Setiap Team
             </h2>
             <p class="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
-              • <strong>Team 1 (Direct Sponsor):</strong> Tempat semua mitra yang Anda ajak langsung (mitra ke-1, ke-5, ke-6, ke-15, dst tetap berada di Level 1 & tidak turun ke Level 2).<br>
-              • <strong>Ujroh Sponsor:</strong> Rp 250.000 / mitra DP Join. <strong>Sponsori 2 Mitra = Balik Modal!</strong><br>
+              • <strong>Team 1 (Direct Operasional):</strong> Tempat semua mitra yang Anda ajak langsung (mitra ke-1, ke-5, ke-6, ke-15, dst tetap berada di Level 1 & tidak turun ke Level 2).<br>
+              • <strong>Ujroh Operasional:</strong> Rp 250.000 / mitra DP Join. <strong>Daftarkan 2 Mitra = Balik Modal!</strong><br>
               • <strong>Komisi Team Multi-Tier:</strong> Didistribusikan dari pertumbuhan mitra di Team 1 s/d Team 12 (Rp 5.000 s/d Rp 1.000 per mitra).
             </p>
           </div>
@@ -173,7 +173,7 @@ const resetFilter = () => {
           <div class="shrink-0 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-center space-y-2 min-w-[200px]">
             <span class="text-[10px] font-black tracking-wider uppercase text-[#e09d49] block">BIAYA JOIN UTAMA</span>
             <div class="text-xl font-black text-white font-mono">DP Rp 500.000</div>
-            <p class="text-[11px] text-slate-200">Bonus Sponsor Direct: <strong>Rp 250.000</strong></p>
+            <p class="text-[11px] text-slate-200">Bonus Operasional Direct: <strong>Rp 250.000</strong></p>
           </div>
         </div>
       </div>

@@ -130,11 +130,11 @@ const submitForm = () => {
               <p v-if="form.errors.email" class="text-xs text-rose-500 font-medium">{{ form.errors.email }}</p>
             </div>
 
-            <!-- 4. Username Sponsor Direct -->
+            <!-- 4. Username Operasional Direct -->
             <div class="space-y-1.5">
               <div class="flex items-center gap-1">
                 <label class="block text-[11px] font-extrabold uppercase tracking-wider text-[#5c2c24]">
-                  USERNAME SPONSOR DIRECT
+                  USERNAME OPERASIONAL DIRECT
                 </label>
                 <HelpCircle class="w-3.5 h-3.5 text-[#9d7c64] cursor-help" />
               </div>
@@ -147,7 +147,7 @@ const submitForm = () => {
                   class="w-full bg-[#fffaf2]/50 border border-[#e09d49]/60 rounded-xl pl-8 pr-4 py-2.5 text-xs font-semibold text-[#5c2c24] focus:outline-none focus:border-[#e98318] focus:ring-2 focus:ring-[#e98318]/20 transition-all"
                 />
               </div>
-              <p class="text-[10px] text-[#9d7c64]">Sponsor langsung berhak atas Ujroh Direct Sponsor Rp 250.000.</p>
+              <p class="text-[10px] text-[#9d7c64]">Operasional langsung berhak atas Ujroh Direct Operasional Rp 250.000.</p>
               <p v-if="form.errors.sponsor_username" class="text-xs text-rose-500 font-medium">{{ form.errors.sponsor_username }}</p>
             </div>
 
