@@ -108,12 +108,12 @@ const formatRupiah = (val) => {
           </div>
         </div>
 
-        <!-- Total Bonus Cair Card (WHITE Card) -->
+        <!-- Total Dana Operasional Card (WHITE Card) -->
         <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-4 flex flex-col justify-between">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
               <TrendingUp class="w-3.5 h-3.5 text-indigo-500" />
-              TOTAL BONUS CAIR
+              TOTAL DANA OPERASIONAL
             </span>
             <div class="w-6 h-6 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500">
               <TrendingUp class="w-3.5 h-3.5" />
@@ -125,18 +125,10 @@ const formatRupiah = (val) => {
           </div>
 
           <!-- Bonus Breakdown -->
-          <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 text-xs">
-            <div class="p-2 bg-slate-50 rounded-xl">
-              <p class="text-[10px] text-slate-400 font-bold uppercase">Operasional (20%)</p>
-              <p class="font-bold text-indigo-600 mt-0.5">{{ formatRupiah(wallet?.bonus_sponsor || 300000) }}</p>
-            </div>
-            <div class="p-2 bg-slate-50 rounded-xl">
-              <p class="text-[10px] text-slate-400 font-bold uppercase">Pasangan/Tier</p>
-              <p class="font-bold text-emerald-600 mt-0.5">{{ formatRupiah(wallet?.bonus_pasangan || 100000) }}</p>
-            </div>
-            <div class="p-2 bg-slate-50 rounded-xl">
-              <p class="text-[10px] text-slate-400 font-bold uppercase">Titik RO</p>
-              <p class="font-bold text-amber-600 mt-0.5">{{ formatRupiah(wallet?.bonus_titik || 0) }}</p>
+          <div class="pt-2 border-t border-slate-100 text-xs">
+            <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+              <p class="text-[10px] text-slate-400 font-bold uppercase">Dana Operasional</p>
+              <p class="font-bold text-indigo-600 text-xs font-mono">{{ formatRupiah(wallet?.bonus_sponsor || 300000) }}</p>
             </div>
           </div>
         </div>
