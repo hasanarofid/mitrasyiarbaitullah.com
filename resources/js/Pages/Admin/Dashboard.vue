@@ -44,7 +44,7 @@ const formatRupiah = (val) => {
 </script>
 
 <template>
-  <Head title="Dashboard System Binary - XSELLER" />
+  <Head title="Dashboard Sistem" />
 
   <AdminLayout>
     <div class="space-y-6">

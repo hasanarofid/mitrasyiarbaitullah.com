@@ -65,7 +65,7 @@ const resetDefaults = () => {
 </script>
 
 <template>
-  <Head title="Pengaturan Sistem Binary - XSELLER" />
+  <Head title="Pengaturan Sistem" />
 
   <AdminLayout>
     <div class="space-y-6">

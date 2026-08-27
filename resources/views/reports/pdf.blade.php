@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title }} - XSELLER</title>
+    <title>{{ $title }} - MITRA SYIAR BAITULLAH</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -95,8 +95,8 @@
 
     <div class="header">
         <div>
-            <div class="brand">XSELLER.ID</div>
-            <div class="sub-brand">DUTA SYNERGY BINARY SYSTEM</div>
+            <div class="brand">MITRA SYIAR BAITULLAH</div>
+            <div class="sub-brand">SISTEM KEMITRAAN & TRAVEL UMROH TERPERCAYA</div>
         </div>
         <div style="text-align: right;">
             <h1 class="title">{{ $title }}</h1>

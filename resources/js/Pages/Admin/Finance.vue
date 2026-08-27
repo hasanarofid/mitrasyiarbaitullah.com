@@ -65,7 +65,7 @@ const formatRupiah = (val) => {
 </script>
 
 <template>
-  <Head title="Keuangan & Mutasi Saldo - XSELLER" />
+  <Head title="Keuangan & Mutasi Saldo" />
 
   <AdminLayout>
     <div class="space-y-6">
