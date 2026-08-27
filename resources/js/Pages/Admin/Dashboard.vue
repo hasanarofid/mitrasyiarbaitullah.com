@@ -176,57 +176,6 @@ const formatRupiah = (val) => {
 
       </div>
 
-      <!-- 4. Membership Packages & TPR Plan PRD 2026 Overview -->
-      <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-          <div class="flex items-center gap-2">
-            <Package class="w-5 h-5 text-indigo-600" />
-            <div>
-              <h3 class="text-base font-extrabold text-slate-900 tracking-tight">Rincian Paket Join & Fitur TPR (PRD 2026)</h3>
-              <p class="text-xs text-slate-500">Ketentuan alokasi bonus sponsor 20%, tier generasi 1-15, dan profit share program TPR.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 pt-2">
-          <div 
-            v-for="pkg in packages" 
-            :key="pkg.name"
-            :class="[
-              pkg.is_current ? 'border-indigo-300 bg-indigo-50/50' : 'border-slate-100 bg-slate-50/60',
-              'p-4 rounded-2xl border space-y-3 flex flex-col justify-between'
-            ]"
-          >
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-black text-slate-900 uppercase">{{ pkg.name }}</span>
-                <span v-if="pkg.is_current" class="px-2 py-0.5 text-[9px] font-bold bg-indigo-100 text-indigo-700 rounded-md">Aktif</span>
-              </div>
-              <h4 class="text-lg font-extrabold text-indigo-600">{{ formatRupiah(pkg.price) }}</h4>
-
-              <ul class="space-y-1.5 text-[11px] text-slate-600 pt-2 border-t border-slate-200/60">
-                <li class="flex items-center gap-1">
-                  <span class="text-emerald-500 font-bold">•</span>
-                  <span>Operasional: <strong class="text-slate-800">{{ formatRupiah(pkg.sponsor_bonus) }}</strong></span>
-                </li>
-                <li class="flex items-center gap-1">
-                  <span class="text-indigo-500 font-bold">•</span>
-                  <span>Max Gen: <strong class="text-slate-800">{{ pkg.max_tier }}</strong></span>
-                </li>
-                <li class="flex items-center gap-1">
-                  <span class="text-cyan-500 font-bold">•</span>
-                  <span>Team Poin: <strong class="text-slate-800">{{ pkg.team_poin }} Poin</strong></span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="pt-2 border-t border-slate-200/60">
-              <span class="text-[10px] font-semibold text-amber-600 block truncate">{{ pkg.tpr }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </AdminLayout>
 </template>
