@@ -11,17 +11,18 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display the admin binary MLM dashboard home based on XSELLER PRD 2026.
-     */
     public function index()
     {
         $user = auth()->user();
+        $sponsorParam = $user ? ($user->username ?: $user->id) : 1;
+        $referralUrl = url('/register?sponsor=' . $sponsorParam);
 
         return Inertia::render('Admin/Dashboard', [
+            'referral_link' => $referralUrl,
             'referral_links' => [
-                'left' => url('/register?sponsor=' . ($user ? $user->id : 1) . '&position=left'),
-                'right' => url('/register?sponsor=' . ($user ? $user->id : 1) . '&position=right'),
+                'auto'  => $referralUrl,
+                'left'  => $referralUrl,
+                'right' => $referralUrl,
             ],
             'wallet' => [
                 'saldo' => 2500000,

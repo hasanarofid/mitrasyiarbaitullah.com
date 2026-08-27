@@ -18,6 +18,7 @@ import {
 } from '@lucide/vue';
 
 const props = defineProps({
+  referral_link: String,
   referral_links: Object,
   wallet: Object,
   binary_legs: Object,
@@ -28,9 +29,10 @@ const props = defineProps({
 
 const copySuccessMsg = ref('');
 
-const copyToClipboard = (text, type) => {
-  navigator.clipboard.writeText(text);
-  copySuccessMsg.value = `Link Referral ${type} berhasil disalin!`;
+const copyToClipboard = (text) => {
+  const urlToCopy = text || props.referral_link || props.referral_links?.auto || props.referral_links?.left || window.location.origin + '/register';
+  navigator.clipboard.writeText(urlToCopy);
+  copySuccessMsg.value = `Link Operasional berhasil disalin!`;
   setTimeout(() => {
     copySuccessMsg.value = '';
   }, 3000);
@@ -52,7 +54,7 @@ const formatRupiah = (val) => {
         <span>{{ copySuccessMsg }}</span>
       </div>
 
-      <!-- 1. Link Referral Banner Card (Soft Ice Blue/Purple Backdrop matching Gambar 2) -->
+      <!-- 1. Link Operasional Banner Card -->
       <div class="bg-[#f0f5ff] border border-indigo-100 rounded-3xl p-5 md:p-6 shadow-sm relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div class="flex items-start gap-4">
           <div class="p-3 bg-[#e0e7ff] text-[#4f46e5] rounded-2xl shrink-0 hidden sm:block">
@@ -60,27 +62,20 @@ const formatRupiah = (val) => {
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h3 class="text-sm font-extrabold text-[#4f46e5] tracking-tight">Link Referral Anda (Otomatis Kiri/Kanan)</h3>
-              <span class="px-2 py-0.5 text-[9px] font-bold bg-[#e0e7ff] text-[#4f46e5] rounded-md">Otomatis Placement</span>
+              <h3 class="text-sm font-extrabold text-[#4f46e5] tracking-tight">Link Operasional Anda</h3>
+              <span class="px-2 py-0.5 text-[9px] font-bold bg-[#e0e7ff] text-[#4f46e5] rounded-md">Auto Placement</span>
             </div>
-            <p class="text-xs text-[#6366f1] mt-1 font-medium">Bagikan link ini. Member baru otomatis akan diletakkan di kaki paling bawah sesuai pilihan Anda.</p>
+            <p class="text-xs text-[#6366f1] mt-1 font-medium">Bagikan link ini untuk mendaftarkan mitra baru</p>
           </div>
         </div>
 
         <div class="flex items-center gap-2 shrink-0">
           <button 
-            @click="copyToClipboard(referral_links?.left, 'Kiri')"
-            class="px-4 py-2 bg-white hover:bg-slate-50 border border-indigo-200 text-[#4f46e5] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+            @click="copyToClipboard(referral_link || referral_links?.auto || referral_links?.left)"
+            class="px-5 py-2.5 bg-[#4f46e5] hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-2 cursor-pointer shadow-md"
           >
-            <Copy class="w-3.5 h-3.5" />
-            <span>Copy Kiri</span>
-          </button>
-          <button 
-            @click="copyToClipboard(referral_links?.right, 'Kanan')"
-            class="px-4 py-2 bg-[#4f46e5] hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
-          >
-            <Copy class="w-3.5 h-3.5" />
-            <span>Copy Kanan</span>
+            <Copy class="w-4 h-4" />
+            <span>Copy Link</span>
           </button>
         </div>
       </div>
