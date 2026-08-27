@@ -399,10 +399,5 @@ const logout = () => {
       </div>
     </div>
 
-    <!-- Bottom Banner Disclaimer -->
-    <div class="w-full py-2 bg-[#2e395d] text-slate-300 text-center text-[11px] font-medium border-t border-[#e09d49]/20">
-      <span>Mitra Syiar Baitullah — Portal Kemitraan & Travel Umroh Terpercaya</span>
-    </div>
-
   </div>
 </template>ate>
