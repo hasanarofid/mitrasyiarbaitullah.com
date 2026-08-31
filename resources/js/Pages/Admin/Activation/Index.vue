@@ -176,7 +176,7 @@ const submitForm = () => {
             </div>
             <p v-if="vouchers.length === 0" class="text-xs text-amber-700 font-semibold flex items-center gap-1 pt-1">
               <AlertCircle class="w-3.5 h-3.5 text-amber-600" />
-              <span>Stok DP Awal kosong. Silakan beli DP Awal terlebih dahulu melalui menu DP Awal.</span>
+              <span>Stok DP Awal kosong. Silakan bayar DP Awal terlebih dahulu melalui menu DP Awal.</span>
             </p>
             <p v-if="form.errors.voucher_code" class="text-xs text-rose-500 font-medium">{{ form.errors.voucher_code }}</p>
           </div>

@@ -92,14 +92,14 @@ const formatRupiah = (val) => {
         <!-- LEFT COLUMN: Forms & Actions (5 Cols) -->
         <div class="lg:col-span-5 space-y-6">
           
-          <!-- 1. BELI DP AWAL AKTIVASI CARD -->
+          <!-- 1. BAYAR DP AWAL AKTIVASI CARD -->
           <div class="bg-white border border-[#e09d49]/30 rounded-3xl p-6 shadow-sm space-y-4">
             <div class="flex items-start gap-3">
               <div class="p-2.5 bg-[#e98318]/15 text-[#e98318] rounded-xl shrink-0">
                 <Ticket class="w-5 h-5" />
               </div>
               <div>
-                <h3 class="text-sm font-black text-[#5c2c24] uppercase tracking-tight">BELI DP AWAL AKTIVASI</h3>
+                <h3 class="text-sm font-black text-[#5c2c24] uppercase tracking-tight">BAYAR DP AWAL AKTIVASI</h3>
                 <p class="text-xs text-[#9d7c64] mt-1 leading-relaxed font-medium">
                   DP Awal Aktivasi digunakan untuk mengaktifkan pendaftaran mitra baru. Harga DP Awal: <strong class="text-[#5c2c24] font-bold">{{ formatRupiah(voucher_price || 500000) }}</strong> per DP Awal.
                 </p>
@@ -118,7 +118,7 @@ const formatRupiah = (val) => {
               class="w-full py-3 bg-gradient-to-r from-[#e98318] to-[#5c2c24] hover:brightness-105 active:scale-[0.99] text-white text-xs font-black rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               <Ticket class="w-4 h-4" />
-              <span>Beli 1 DP Awal ({{ formatRupiah(voucher_price || 500000) }})</span>
+              <span>Bayar 1 DP Awal ({{ formatRupiah(voucher_price || 500000) }})</span>
             </button>
           </div>
 

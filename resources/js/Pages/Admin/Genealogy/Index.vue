@@ -261,7 +261,7 @@ const resetFocus = () => {
             </div>
             <div>
               <h3 class="text-base font-black text-[#5c2c24] uppercase tracking-tight">
-                PROYEKSI KOMISI TEAM (SKEMA {{ selectedMultiplier }} x {{ selectedMultiplier }})
+                PROYEKSI KOMISI TEAM
               </h3>
               <p class="text-xs text-[#9d7c64] font-medium">
                 Matriks potensi pendapatan jaringan berdasarkan skema duplikasi kelipatan {{ selectedMultiplier }} mitra.
