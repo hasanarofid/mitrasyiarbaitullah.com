@@ -25,7 +25,7 @@ const search = ref(props.filters?.search || '');
 // Search filter with watcher
 watch(search, (val) => {
   router.get(
-    route('network-data.index'),
+    route('admin.network-data.index'),
     { search: val },
     { preserveState: true, replace: true }
   );

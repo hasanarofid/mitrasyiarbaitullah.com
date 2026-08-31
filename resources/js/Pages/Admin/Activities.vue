@@ -20,7 +20,7 @@ const props = defineProps({
 
 const switchTab = (tabKey) => {
   router.get(
-    route('activities.index'),
+    route('admin.activities.index'),
     { tab: tabKey },
     { preserveState: true, preserveScroll: true }
   );

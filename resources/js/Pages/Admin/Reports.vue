@@ -19,18 +19,18 @@ const props = defineProps({
 
 const switchTab = (type) => {
   router.get(
-    route('reports.index'),
+    route('admin.reports.index'),
     { type: type },
     { preserveState: true, preserveScroll: true }
   );
 };
 
 const exportExcel = () => {
-  window.open(route('reports.export-excel', { type: props.active_type }), '_blank');
+  window.open(route('admin.reports.export-excel', { type: props.active_type }), '_blank');
 };
 
 const exportPdf = () => {
-  window.open(route('reports.export-pdf', { type: props.active_type }), '_blank');
+  window.open(route('admin.reports.export-pdf', { type: props.active_type }), '_blank');
 };
 
 const formatRupiah = (val) => {
