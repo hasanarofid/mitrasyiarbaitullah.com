@@ -21,7 +21,7 @@ class SettingController extends Controller
                 'pin_price'              => (float) ($settings['pin_price'] ?? 200000),
                 'voucher_price'          => (float) ($settings['voucher_price'] ?? 500000),
                 'payment_bank_name'      => $settings['payment_bank_name'] ?? 'BCA',
-                'payment_account_no'     => $settings['payment_account_no'] ?? '',
+                'payment_account_no'     => $settings['payment_account_no'] ?? '99999999',
                 'payment_account_name'   => $settings['payment_account_name'] ?? 'Mitra Syiar Baitullah',
                 'sponsor_percent'        => (float) ($settings['sponsor_percent'] ?? 100),
                 'pairing_percent'        => (float) ($settings['pairing_percent'] ?? 50),

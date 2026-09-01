@@ -23,7 +23,7 @@ const form = useForm({
   pin_price:            props.config?.pin_price || 200000,
   voucher_price:        props.config?.voucher_price || 500000,
   payment_bank_name:    props.config?.payment_bank_name || 'BCA',
-  payment_account_no:   props.config?.payment_account_no || '',
+  payment_account_no:   props.config?.payment_account_no || '99999999',
   payment_account_name: props.config?.payment_account_name || 'Mitra Syiar Baitullah',
   sponsor_percent:      props.config?.sponsor_percent || 100,
   pairing_percent:      props.config?.pairing_percent || 50,

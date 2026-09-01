@@ -18,7 +18,7 @@ class PaymentOrderController extends Controller
         $voucherPrice = (float) Setting::getValue('voucher_price', 500000);
         $bankInfo = [
             'bank_name'    => Setting::getValue('payment_bank_name', 'BCA'),
-            'account_no'   => Setting::getValue('payment_account_no', '-'),
+            'account_no'   => Setting::getValue('payment_account_no', '99999999'),
             'account_name' => Setting::getValue('payment_account_name', 'Mitra Syiar Baitullah'),
         ];
 

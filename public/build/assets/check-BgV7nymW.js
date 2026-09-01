@@ -1,0 +1,1 @@
+import{t as e}from"./createLucideIcon-BGTXd7RE.js";var t=e(`check`,[[`path`,{d:`M20 6 9 17l-5-5`,key:`1gmf2c`}]]);export{t};
